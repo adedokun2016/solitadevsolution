@@ -1,5 +1,4 @@
 
-
 <p align="center">
   <img src="banner.png">
 </p>
@@ -9,27 +8,58 @@
 
 - ✍️ This project is made as a part of the application for Solita dev academy 2022. [Link to the Exercise ](https://github.com/solita/dev-academy-2022-exercise)
 
-My implementation of [Solita Dev Academy exercise](https://github.com/solita/dev-academy-2022-exercise). Project is made with PHP and contains both API and Web UI implementations.
+My implementation of [Solita Dev Academy exercise](https://github.com/solita/dev-academy-2022-exercise). Project is made with PHP and contains both Backend and Web UI implementations.
 
 
-## How to use:
+## How to run the project
 
-### Prerequisites: reviewer install something on their computer before they can compile and run the project
+### Prerequisites: 
 Install [XAMPP localhost server](https://www.apachefriends.org/download.html)
 
-### Configurations: Do you have to configure for example database connections locally
 
-### How to run the project
+### Installation/Configurations:
+- Download zip file and Unzip file on your local server.
+- Put this file inside "c:/xampp/htdocs/" .
+- Database Configuration Open phpmyadmin
+- Create Database named "adedokun2016"
+- Import database adedokun2016.sql from downloaded folder(inside database)
+- Open Your browser put inside "http://localhost/Project Folder Name/"
+
 
 ### Tests: If your project has tests, include instructions on how to run them
 
 ### Description of the project: What is the purpose of the project and what features it has?
 
-### Technology choices: List chosen technologies. It’s also nice to know why you chose those technologies.
+This PHP project is to create a UI and a backend for displaying data from different farms.
+
+Farm Data are from 4 different research firm namely
+- Noora's farm
+- Friman Metsola collective
+- Organic Ossi's Impact That Lasts plantation
+- PartialTech Research Farm
+
+Features includes
+
+- Login / Logout
+- Registration of users
+- Password change
+- Add New data
+- Delete Farm data
+- View Farm data Details-Climate information and Location 
+- Edit Farm Data
+- Export Farm Data in Excel file
+
+
+
+### Used technologies:
+I used PHP because its ability to interact with database systems
+- Frontend: HTML, CSS, JavaScript,Bootstrap
+- Back end: PHP, MySQL Database
 
 ### Image of frontend implementation/Features showcase
-### Installation
-### Used technologies:
+
+
+
 
 
 
@@ -85,11 +115,8 @@ Install [XAMPP localhost server](https://www.apachefriends.org/download.html)
 If I have time, I would still like to do these:
 
 
-- Recreate using Laravel or React
-- 
+- Recreate using Laravel or React Framework
+- Running backend in Docker
 
 
 - [✍️ Link to the Exercise ](https://github.com/solita/dev-academy-2022-exercise)
-
-
-
