@@ -163,7 +163,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
          
         </form>
   </div>
-  <div class="card-footer"><a href="#">Forget Password </a></div>
+  <div class="card-footer"><a href="resetpassword.php">Forget Password </a></div>
 </div>
     </div>
 
