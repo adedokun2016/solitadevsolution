@@ -13,29 +13,15 @@ include('config.php');
 $added = false;
 
 
-//Add  new student code 
+//Add  new farm code 
 
 if(isset($_POST['submit'])){
     $u_card = $_POST['card_no'];
     $u_f_name = $_POST['user_first_name'];
-    $u_gender = $_POST['user_gender'];
     $u_email = $_POST['user_email'];
     $u_phone = $_POST['user_phone'];
     $u_staff_id = $_POST['staff_id'];
     
-
-
-    //image upload
-
-    $msg = "";
-    $image = $_FILES['image']['name'];
-    $target = "upload_images/".basename($image);
-
-    if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
-        $msg = "Image uploaded successfully";
-    }else{
-        $msg = "Failed to upload image";
-    }
 
     $insert_data = "INSERT INTO friman_metsola(farm_name, date_time, metric_type, metric_value) VALUES('$farm_name','$date_time','$metric_type','$metric_value')";
     $run_data = mysqli_query($con,$insert_data);
@@ -72,14 +58,14 @@ if(isset($_POST['submit'])){
 <body>
 
     <div class="container">
-<a href="https://dev.solita.fi/2021/11/04/how-to-pre-assignments.html" target="_blank"><img src="https://www.meettheyoungsters.be/wp-content/companies/890/logo/logo_5f86c8385595d.jpeg" alt="" width="350px" ></a><br><hr>
+<a href="https://dev.solita.fi/2021/11/04/how-to-pre-assignments.html" target="_blank"><img src="https://www.meettheyoungsters.be/wp-content/companies/890/logo/logo_5f86c8385595d.jpeg" alt="" width="250px" ></a><br><hr>
 
 <!-- adding alert notification  -->
 <?php
     if($added){
         echo "
             <div class='btn-success' style='padding: 15px; text-align:center;'>
-                Your Student Data has been Successfully Added.
+                Your Farm Data has been Successfully Added.
             </div><br>
         ";
     }
@@ -90,12 +76,12 @@ if(isset($_POST['submit'])){
 
 
 
- <a href="logout.php" class="btn btn-success"><i class="fa fa-lock"></i> Logout</a>
+<a href="index.php" class="btn btn-success"><i class="fa fa-home"></i> Home</a>
   <a href="nooras.php" class="btn btn-success"><i class="fa fa-plus"></i> Nooras Farm</a>
   <a href="ossi.php" class="btn btn-success"><i class="fa fa-plus"></i> Ossi_Farm</a>
   <a href="friman.php" class="btn btn-success"><i class="fa fa-plus"></i> Friman Metsola Farm</a>
   <a href="partial.php" class="btn btn-success"><i class="fa fa-plus"></i> Partial Tech farm</a>
-  <a href="export.php" class="btn btn-success pull-right"><i class="fa fa-download"></i> Export Data</a>
+  <a href="logout.php" class="btn btn-success pull-right"><i class="fa fa-lock"></i> Logout</a>
      <button class="btn btn-success" type="button" data-toggle="modal" data-target="#myModal">
   <i class="fa fa-plus"></i> Add New Data
   </button>
@@ -115,7 +101,7 @@ if(isset($_POST['submit'])){
         </thead>
             <?php
 
-            $get_data = "SELECT * FROM friman_metsola order by 1 desc";
+            $get_data = "SELECT * FROM friman_metsola  order by id desc ";
             $run_data = mysqli_query($con,$get_data);
             $i = 0;
             while($row = mysqli_fetch_array($run_data))
@@ -124,11 +110,8 @@ if(isset($_POST['submit'])){
                 $id = $row['id'];
                 $u_card = $row['date_time'];
                 $u_f_name = $row['farm_name'];
-                $u_l_name = $row['u_l_name'];
                 $u_phone = $row['metric_type'];
                 $u_staff_id = $row['metric_value'];
-
-              
 
                 echo "
 
@@ -235,7 +218,7 @@ if(isset($_POST['submit'])){
 <label for="inputPassword4">Metric Value</label>
 <input type="text" class="form-control" name="metric_value" placeholder="Enter Metric Value">
 </div>
-<div class="form-group col-md-6">
+<div class="form-group">
 <label for="inputState">Location</label>
 <select name="state" class="form-control">
   <option selected>Choose...</option>
@@ -245,16 +228,6 @@ if(isset($_POST['submit'])){
                                     <option value="Organic Ossi's Impact That Lasts plantase">Organic Ossi's Impact That Lasts plantase</option>                                    
 </select>
 </div>
-
-
-
-            
-
-
-            <div class="form-group col-md-6">
-                <label>Image</label>
-                <input type="file" name="image" class="form-control" >
-            </div>
 
             
              <input type="submit" name="submit" class="btn btn-info btn-large" value="Submit">
@@ -401,7 +374,6 @@ while($row = mysqli_fetch_array($run_data))
     $metrictype = $row['metric_type'];
     $metricvalue = $row['metric_value'];
     $location = $row['location'];
-    $time = $row['uploaded'];
     echo "
 
 <div id='edit$id' class='modal fade' role='dialog'>
@@ -455,7 +427,7 @@ while($row = mysqli_fetch_array($run_data))
         <input type='text' class='form-control' name='metricvalue' maxlength='12' placeholder='Enter Metric Value' value='$metricvalue'>
         </div>
         </div>
-        <div class='form-group col-md-6'>
+        <div class='form-group'>
         <label for='inputState'>Farm Location</label>
         <select name='u_location' class='form-control'>
           <option>$u_location</option>
@@ -464,14 +436,6 @@ while($row = mysqli_fetch_array($run_data))
                                             <option value='Friman Metsola collective'>Friman Metsola collective</option>
                                             <option value='Organic Ossi's Impact That Lasts plantase'>Organic Ossi's Impact That Lasts plantase</option>
         </select>
-        </div>
-            <div class='form-group col-md-6'>
-                <label>Image</label>
-                <input type='file' name='image' class='form-control'>
-                <img src = 'upload_images/$image' style='width:50px; height:50px'>
-            </div>
-
-            
             
              <div class='modal-footer'>
              <input type='submit' name='submit' class='btn btn-info btn-large' value='Submit'>
